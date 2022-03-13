@@ -24,6 +24,8 @@ BigDripleaf:
       FULL: 20
       NONE: 30
 ```
+### Editing config.yml
+Should you put invalid data/values into the config.yml, there will be descriptive error messages in the console upon plugin-reload.
 
 ## Installation
 
