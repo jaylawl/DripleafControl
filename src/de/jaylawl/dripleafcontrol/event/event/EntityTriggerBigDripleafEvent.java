@@ -54,7 +54,33 @@ public class EntityTriggerBigDripleafEvent extends EntityEvent implements Cancel
         return this.ticksUntilState.get(tilt);
     }
 
-    public void setTicksUntilState(final @NotNull BigDripleaf.Tilt tilt, final int ticks) {
+    public void setTicksUntilState(final @NotNull BigDripleaf.Tilt tilt, final int ticks) throws IllegalArgumentException {
+        if (ticks < 0) {
+            throw new IllegalArgumentException("\"ticks\" must be greater than or equal to 0");
+        } else {
+            final BigDripleaf.Tilt previousTiltState = switch (tilt) {
+                case PARTIAL -> BigDripleaf.Tilt.UNSTABLE;
+                case FULL -> BigDripleaf.Tilt.PARTIAL;
+                case NONE -> BigDripleaf.Tilt.FULL;
+                default -> null;
+            };
+            if (previousTiltState != null) {
+                if (ticks <= this.ticksUntilState.get(previousTiltState)) {
+                    throw new IllegalArgumentException("\"ticks\" for " + tilt + " must be greater than ticks of " + previousTiltState);
+                }
+            }
+            final BigDripleaf.Tilt nextTiltState = switch (tilt) {
+                case UNSTABLE -> BigDripleaf.Tilt.PARTIAL;
+                case PARTIAL -> BigDripleaf.Tilt.FULL;
+                case FULL -> BigDripleaf.Tilt.NONE;
+                default -> null;
+            };
+            if (nextTiltState != null) {
+                if (ticks >= this.ticksUntilState.get(previousTiltState)) {
+                    throw new IllegalArgumentException("\"ticks\" for " + tilt + " must be smaller than ticks of " + nextTiltState);
+                }
+            }
+        }
         this.ticksUntilState.put(tilt, ticks);
     }
 
