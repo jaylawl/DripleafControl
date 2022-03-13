@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="DripleafControl:jar">
+    <output-path>$PROJECT_DIR$/../__builds</output-path>
+    <root id="archive" name="DripleafControl.jar">
+      <element id="module-output" name="DripleafControl" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/de/jaylawl/dripleafcontrol/resources/plugin.yml" />
+    </root>
+  </artifact>
+</component>

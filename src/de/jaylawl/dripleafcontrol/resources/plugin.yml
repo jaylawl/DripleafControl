@@ -1,0 +1,19 @@
+main: de.jaylawl.dripleafcontrol.DripleafControl
+name: DripleafControl
+version: 1.0.0
+author: jaylawl
+
+api-version: "1.17"
+load: STARTUP
+depend: [ ]
+softdepend: [ ]
+loadbefore: [ ]
+
+commands:
+
+  dripleafcontrol:
+    aliases: [ ]
+    permission: "dripleafcontrol.admin"
+    permission-message: "§cInsufficient permission"
+
+permissions: { }

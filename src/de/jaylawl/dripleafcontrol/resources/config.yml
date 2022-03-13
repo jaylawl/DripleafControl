@@ -1,0 +1,7 @@
+BigDripleaf:
+  TiltProcess:
+    TicksUntilState:
+      UNSTABLE: 0
+      PARTIAL: 10
+      FULL: 20
+      NONE: 30
